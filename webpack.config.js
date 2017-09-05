@@ -5,10 +5,13 @@ var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
 
 var config = {
-    entry: SRC_DIR + "/app/index.js",
+    entry: {
+	    app: SRC_DIR + "/app/index.js",
+	    css: SRC_DIR + "/app/css/styles.scss"
+	},
     output: {
         path: DIST_DIR + "/app",
-        filename: "bundle.js",
+        filename: "[name].js",
         publicPath: "/app/"
     },
     module: {
@@ -20,6 +23,11 @@ var config = {
                 query: {
                     presets: ["react", "es2015", "stage-2"]
                 }
+            },
+            {
+                test: /\.(s?)css$/,
+                include: SRC_DIR,
+                loader: "style-loader!css-loader!sass-loader"
             }
         ]
     }
