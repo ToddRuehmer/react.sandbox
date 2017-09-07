@@ -2,7 +2,6 @@ import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import {Cell} from "./Cell";
 import {Header} from "./Header";
 
 import {Home} from "./Home";
@@ -24,10 +23,6 @@ export class Main extends React.Component {
 						</Switch>
 					</section>
 				</Router>
-				<section className={this.props.layout + " grid-x body"}>
-					<Cell initialScore={0} />
-					<Cell initialScore={0} />
-				</section>
 			</section>
         )
     }
