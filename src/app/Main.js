@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import {Header} from "./Header";
 
 import {Home} from "./Home";
-import {Contact} from "./Contact";
+import {SettingsPage} from "./SettingsPage";
 import {About} from "./About";
 
 export class Main extends React.Component {
@@ -19,7 +19,7 @@ export class Main extends React.Component {
 							<Route exact component={Home} path={"/"} />
 							<Route component={Home} path={"/Home"} />
 							<Route component={About} path={"/About"} />
-							<Route component={Contact} path={"/Contact"} />
+							<Route component={SettingsPage} path={"/Settings"} />
 						</Switch>
 					</section>
 				</Router>

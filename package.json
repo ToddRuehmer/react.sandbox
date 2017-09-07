@@ -19,12 +19,13 @@
   },
   "homepage": "https://github.com/ToddRuehmer/react.sandbox#readme",
   "dependencies": {
+    "foundation-sites": "*",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "*",
-    "foundation-sites": "*"
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

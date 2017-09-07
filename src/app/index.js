@@ -3,7 +3,9 @@ import React from "react";
 import {render} from "react-dom";
 import { BrowserRouter as Router, Route, NavLink, Switch, browserHistory, IndexRoute } from 'react-router-dom';
 //Redux Import
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+//Redux Logger Import
+import { createLogger } from "redux-logger";
 
 //Global Import
 import {Cell} from "./Cell";
@@ -11,11 +13,10 @@ import {Main} from "./Main";
 
 //Component Import
 import {Home} from "./Home";
-import {Contact} from "./Contact";
+import {SettingsPage} from "./SettingsPage";
 import {About} from "./About";
 
 //React Init
-
 const mathReducer = (state = {
 	result: 1,
 	lastValues: []
@@ -55,13 +56,19 @@ const settingsReducer = (state = {
 	return state;
 }
 
+//Logger
+const basicLogger = (store) => (next) => (action) => {
+	console.log("logged action", action);
+	next(action);
+}
+
 const store = createStore(combineReducers({
 	mathReducer,
 	settingsReducer
-}));
+}), {}, applyMiddleware(createLogger()));
 
 store.subscribe(() => {
-	console.log("store updated", store.getState());
+	//console.log("store updated", store.getState());
 });
 
 store.dispatch({

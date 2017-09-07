@@ -14,7 +14,7 @@ export class Navigation extends React.Component {
 				    <ul className="menu">
 				        <li><NavLink to={"/Home"} activeClassName={"is-active"}>{"Home"}</NavLink></li>
 				        <li><NavLink to={"/About"} activeClassName={"is-active"}>{"About"}</NavLink></li>
-				        <li><NavLink to={"/Contact"} activeClassName={"is-active"}>{"Contact"}</NavLink></li>
+				        <li><NavLink to={"/Settings"} activeClassName={"is-active"}>{"Settings"}</NavLink></li>
 				    </ul>
 				</section>
         	</nav>
