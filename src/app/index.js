@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, NavLink, Switch, browserHistory, IndexR
 import { createStore, combineReducers, applyMiddleware } from "redux";
 //Redux Logger Import
 import { createLogger } from "redux-logger";
+import {Provider} from "react-redux";
 
 //Global Import
 import {Cell} from "./Cell";
@@ -63,15 +64,15 @@ const basicLogger = (store) => (next) => (action) => {
 }
 
 const store = createStore(combineReducers({
-	mathReducer,
-	settingsReducer
+	math: mathReducer,
+	settings: settingsReducer
 }), {}, applyMiddleware(createLogger()));
 
 store.subscribe(() => {
 	//console.log("store updated", store.getState());
 });
 
-store.dispatch({
+/*store.dispatch({
 	type: "ADD",
 	payload: 100
 });
@@ -84,7 +85,7 @@ store.dispatch({
 store.dispatch({
 	type: "SET_THEME",
 	payload: "dark"
-});
+});*/
 
 //Module
 export class Defaultpage extends React.Component {
@@ -110,4 +111,8 @@ export class Defaultpage extends React.Component {
 	}
 }
 
-render(<Defaultpage />, window.document.getElementById('defaultpage'));
+render(
+	<Provider store={store}>
+		<Defaultpage />
+	</Provider>, 
+	window.document.getElementById('defaultpage'));
