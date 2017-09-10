@@ -16,7 +16,7 @@ import {About} from "./components/About";
 import store from "./store";
 
 //Module
-import {Defaultpage} from "./components/DefaultPage";
+import Defaultpage from "./components/DefaultPage";
 
 render(
 	<Provider store={store}>

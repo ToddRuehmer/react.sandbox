@@ -8,14 +8,9 @@ class Settings extends React.Component {
 		super();
 	}
 	
-	themeChange(e) {
-	}
-	
-	componentWillUpdate() {console.log(this.props.settings.themeClass)}
-	
     render() {
 	    return (
-		    <section className={this.props.settings.themeClass + " settings small-12 grid-x"}>
+		    <section className={"settings small-12 grid-x"}>
 		    	<fieldset className="small-6">
 			    	<legend>Theme</legend>
 			    	<div className="grid-x grid-margin-x"> 

@@ -1,15 +1,11 @@
 import React from "react";
+import {Provider, connect} from "react-redux";
 
 import {Main} from "./Main";
 
-export class Defaultpage extends React.Component {
+class Defaultpage extends React.Component {
 	constructor(props) {
 		super();
-		this.state = {
-			numberValue: 0,
-			status: 0,
-			layout: ""
-		};
 	}
 	add() {
 		this.setState({
@@ -18,9 +14,18 @@ export class Defaultpage extends React.Component {
 	}
 	render() {
 		return (
-			<div className="container">
+			<div className={this.props.settings.themeClass + " container"}>
 				<Main title={"Hello World"} layout={"two-column"} />
 			</div>
 		)
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		settings: state.settings,
+		math: state.math
+	}
+}
+
+export default connect(mapStateToProps)(Defaultpage);

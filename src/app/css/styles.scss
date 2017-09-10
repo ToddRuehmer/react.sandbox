@@ -1,3 +1,6 @@
+//Vars
+@import "colors";
+
 @import "../../../node_modules/foundation-sites/scss/foundation";
 
 @include foundation-global-styles;
@@ -8,3 +11,9 @@
 @include foundation-menu;
 @include foundation-top-bar;
 @include foundation-media-object;
+
+//Theme
+@import "theme";
+
+//Layout
+@import "layout";
