@@ -6,29 +6,32 @@ const weatherReducer = (state = {
 	lastValues: []
 	}, action) => {
 		switch (action.type) {
-			case "GET_WEATHER":
-				var keyPromise = axios({
-					url:'/app/keys/OpenWeatherAPIKey.json',
-					responseType:'json'
-				}).then(function(result){
-					state = {
-						...state,
-						apiKey: result.data.key
-					}
-				});
-				keyPromise.then( function(){
-					axios.get('http://api.openweathermap.org/data/2.5/weather?q=London&APPID=' + state.apiKey)
-					.then(function(result) {
-						state = {
-							...state,
-							weather: result.data,
-							lastValues: [...state.lastValues, result.data]
-						};
-					});
-				});
+			case "SET_WEATHER":
+				var result = action.payload;
+				state = {
+					...state,
+					weather: result,
+					lastValues: [...state.lastValues, result.data]
+				};
+				if(state.weather.main) {
+					console.log(state.weather, "weather");
+					state.weather.main.temp = parseInt(state.weather.main.temp.toFixed(2));
+				}
+				return state;
 				break;
-		}
-		return state;
+				
+			case "SET_KEY":
+				var key = action.payload;
+				state = {
+					...state,
+					key: key
+				};
+				return state;
+				break;
+				
+			default:
+				return state;
+		}		
 	}
 	
 	export default weatherReducer;

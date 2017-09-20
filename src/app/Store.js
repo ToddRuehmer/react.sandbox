@@ -14,4 +14,4 @@ export default createStore(combineReducers({
 	math: mathReducer,
 	settings: settingsReducer,
 	weather: weatherReducer
-}), {}, applyMiddleware(createLogger(), thunk));
+}), {}, applyMiddleware(createLogger(), thunk, promise()));

@@ -1,11 +1,15 @@
 import React from "react";
 import {Provider, connect} from "react-redux";
 
+import Temperature from "./Tempurature";
+import Location from "./Location";
+
 import { getWeather } from "../actions/weatherActions";
 
 class Weather extends React.Component {
-	constructor() {
+	constructor(props) {
 		super();
+		props.getWeather();
 	}
 	
     render() {
@@ -13,7 +17,8 @@ class Weather extends React.Component {
 		    <section className="weather grid-x">
 		    	<section className="small-12">
 			    	<h1>Weather Report</h1>
-			    	<button onClick={() => this.props.getWeather("weather")} className="button">Get Weather</button>
+			    	{this.props.weather.weather.name && <Location locale={this.props.weather.weather.name} />}
+			    	{this.props.weather.weather.main && <Temperature tempurature={this.props.weather.weather.main.temp} />}
 		    	</section>
 		    </section>
         )

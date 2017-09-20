@@ -12,9 +12,11 @@ const settingsReducer = (state = {
 				themeClass: themeClass,
 				lastValues: [...state.lastValues, action.payload]
 			};
+			return state;
 			break;
+		default:
+			return state;
 	}
-	return state;
 }
 
 export default settingsReducer;

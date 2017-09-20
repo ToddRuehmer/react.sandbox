@@ -11,7 +11,6 @@ import Weather from "./Weather";
 
 export class Main extends React.Component {
     render() {
-	    console.log(Weather);
 	    return (
 		    <section id="main" className="grid-container">
 				<Router>
